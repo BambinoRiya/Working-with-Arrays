@@ -1,0 +1,31 @@
+'''First of all, arbituary percission integers indicate that calculations are performed on numbers 
+whose digits of precision are limited only by the available memory of the host system.
+to achieve this we use arrays to represent integers, that is one didgit per array entry
+
+with the most significant digit appearing first and a negative leading digit denoting a negative integer
+We will write a program that takes two arrays representing integers (hmm seems easy lol) and returns an 
+integer representing thier product. For example consider two arrays A and B
+
+A = [1,2,3,4,5,6,7,8,9] B = [-8,4,3,2,4,5,6,7,8]. the function should return the procust of A and B taken as integers
+the possibility of overflow does not allow us to easily convert the array to an integer. So we will use the grade 
+school algoritm for multiplication which is multiplying the first number by the digit of the sceond number then 
+adding all the resulting term'''
+
+
+def multiply(num1,num2) #takes two parameters
+    sign = -1
+    if (num1[0] < 0) ^ (num2[0] < 0) else 1
+    num[0],num2[0] = abs(num1[0]),abs(num2[0])
+    
+    result = [0] * (len(num1) + len(num2))
+    for i in reversed(range(len(num1))):
+        result[i +j + 1] += num1[i] + num2[j]
+        result[i+j] += result[i + j + 1]  //10
+        result[i+ j + 1] %= 10
+        
+    #remove the leading zeros
+    result = result[next((i for, x in enumerate(result)
+                            if x != 0), len(result)):] or [0]
+    
+    return [sign * result[0]] + result[1:]
+    #time complexity is O(nm)
